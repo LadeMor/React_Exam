@@ -18,6 +18,7 @@ class AddTasks extends React.Component {
     }
 
 
+
     inputChange = event => {
         this.setState({ input: event.target.value })
     }
@@ -32,7 +33,6 @@ class AddTasks extends React.Component {
 
 
     render(){
-
         return(
             <div className="add_input">
                 <p>Add the title:</p>
@@ -40,11 +40,30 @@ class AddTasks extends React.Component {
                 <p>Add the description:</p>
                 <input type="text" onChange = { this.descChange } value={this.state.dscInput} ></input>
                 <p>Add the time:</p>
-                <input onChange = { this.timeChange } value={this.state.timeInput}/>
+                <input type="time" onChange = { this.timeChange } value={this.state.timeInput}/>
                 <button onClick={this.addTasks}>Add</button><br/>
             </div>
         )
     }
+}
+
+class EditTask extends React.Component{
+
+    editTask = () => {
+        if(this.state.input || this.state.dscInput || this.state.timeInput){
+            this.props.editTasks(this.state.input, this.state.dscInput, this.state.timeInput);
+            this.setState({ input:'', dscInput:'', timeInput:'' });
+        }
+    }
+
+    render(){
+        return(
+            <div className="edit_task">
+                <button onClick={this.editTask}>Edit</button>
+            </div>
+        )
+    }
+
 }
 
 export default AddTasks;

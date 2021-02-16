@@ -11,7 +11,11 @@ const TodoListTask = (props) => {
         <div className="priore_check">
             <p onClick={props.impTask}>🚩</p>
         </div>  
-    
+
+const EditTask = () => 
+    <div className="edit_task">
+        <button onClick={props.editTasks}>Edit</button>
+    </div>  
 
     return(
         <div className = "task">
@@ -22,6 +26,7 @@ const TodoListTask = (props) => {
                     <h3>{props.task.time}</h3>
                     <ActionButton></ActionButton>
                     <PrioreCheck></PrioreCheck>
+                    <EditTask></EditTask>
                 </li>
             </ul>  
         </div>
